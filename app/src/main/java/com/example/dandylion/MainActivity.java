@@ -10,6 +10,7 @@ import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         items = FileHelper.readData(this);
 
+        Log.d("test","test");
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         itemsList.setAdapter(adapter);
 
