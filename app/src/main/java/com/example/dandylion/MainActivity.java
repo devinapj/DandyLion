@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         items = FileHelper.readData(this);
 
-        Log.d("test","test");
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         itemsList.setAdapter(adapter);
 
