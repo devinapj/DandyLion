@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,11 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BottomNavigationView navBar = findViewById(R.id.bottomNav);
+        navBar.setSelectedItemId(R.id.nav_reminders);
 
         itemET = findViewById(R.id.item_edit_text);
         btn = findViewById(R.id.add_btn);
@@ -64,6 +70,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         date.setText(formattedDate);
 
+        navBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.nav_plants:
+                        Toast plantCheck = Toast.makeText(getApplicationContext(),"plants",Toast.LENGTH_SHORT);
+                        plantCheck.show();
+                        break;
+                    case R.id.nav_reminders:
+                        Toast reminderCheck = Toast.makeText(getApplicationContext(),"reminders",Toast.LENGTH_SHORT);
+                        reminderCheck.show();
+                        break;
+                    case R.id.nav_watering:
+                        Toast wateringCheck = Toast.makeText(getApplicationContext(),"watering",Toast.LENGTH_SHORT);
+                        wateringCheck.show();
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
